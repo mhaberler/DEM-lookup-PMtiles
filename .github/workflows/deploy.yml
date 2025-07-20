@@ -1,0 +1,52 @@
+name: Vite Vue Deploy
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    # 指定虚拟机环境
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        # 拉取 GitHub 仓库代码
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        # 设定 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.com/
+
+      - name: Install pnpm
+        id: pnpm-install
+        uses: pnpm/action-setup@v3
+        # 安装依赖
+        with:
+          version: 9
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build 🔧
+        # 打包
+        run: pnpm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # 部署打包目录
+          folder: dist
+          # 是否清理旧文件
+          clean: true
+          # 密钥名
+          token: ${{ secrets.VITE_VUE_DEPLOY }}
+          # 分支
+          branch: gh-pages
