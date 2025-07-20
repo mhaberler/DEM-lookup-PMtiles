@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-. "$(dirname "$0")/common.sh"
-
-# Perform lint check on files in the staging area through .lintstagedrc configuration
-pnpm exec lint-staged
