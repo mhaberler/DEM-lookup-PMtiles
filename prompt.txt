@@ -1,0 +1,39 @@
+the primary task is:
+
+- create a typescript module called DEMLookup
+- init parameter is a URL pointing to a pmtiles protomap
+- use https://www.npmjs.com/package/pmtiles
+- the protomap has mapbox rgb-encoded elevation data
+- the module should be able to cache tiles
+- there are sample pmtiles dems available at: https://static.mah.priv.at/cors/AT-10m-png.pmtiles and https://static.mah.priv.at/cors/AT-10m-webp.pmtiles
+- when opening a pmtiles url, inspect zoom factors and use the highest one available
+
+- the API shall be able to:
+-- given lat and lon, return the elevation and meters/pixel resolution
+-- cache a configurable number of tiles already retrieved
+-- return info about the pmtiles file, namely resolution in meters/pixel, zoom factors, encoding/compression etc
+-- a method to optionall pre-cache a tile and a bounding box of tiles
+-- a method to clear the tile cache
+-- have a debug flag to trace pmtiles steps (if available in protomaps)
+-- it should support PNG and WEBP tile decompression using the browser-builtin decompressors
+the vue demo app shall have:
+- a text region with parameter input and status display
+- a way to input a custom pmtiles url
+- a leaflet window below tracking the current position under the cursos
+- moving the cursor over the map should cause a lookup to happen and displayed as a popup over the cursor, including rgb values and elevation
+
+- use the empty template in src/views/HomeView.vue to insert this app
+- add a method to draw a bounding box and precache those dem tiles
+
+use bun as package manager
+
+
+-- pmtiles/geotiff-dem-2-pmtiles.sh
+
+rewrite this script to take any number of tif files,
+properly parse arguments, give help, and an optional target directory
+for the pmtiles files
+also use temp files with cleanup
+arguments would be
+- tilesize, default 256
+- target directory - if none given, leave artefacts in current directory
