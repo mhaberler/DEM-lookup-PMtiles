@@ -1,116 +1,69 @@
-<h1 align="center"><a href="https://github.com/ElanYoung/vite-vue-js-starter-template" target="_blank">Vite 6 🚀 - Vue 3  Starter Template</a></h1>
-
-<p align="center">
-  <a href="https://nodejs.org/en/about/releases/">
-    <img src="https://img.shields.io/node/v/vite.svg" alt="node compatility" />
-  </a>
-  <a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/vue-3.5.15-brightgreen.svg" alt="vue" />
-  </a>
-  <a href="https://cn.vitejs.dev" rel="nofollow">
-    <img src="https://img.shields.io/badge/vite-6.3.5-3963bc.svg" alt="vite" style="max-width:100%;" />
-  </a>
-  <a href="https://github.com/vuejs/router">
-    <img src="https://img.shields.io/badge/vue--router-4.5.1-brightgreen.svg" alt="vue-router" />
-  </a>
-  <a href="https://github.com/vuejs/pinia">
-    <img src="https://img.shields.io/badge/pinia-3.0.2-brightgreen.svg" alt="pinia" />
-  </a>
-  <a href="https://doc.starimmortal.com">
-    <img alt="author" src="https://img.shields.io/badge/author-ElanYoung-blue.svg" />
-  </a>
-  <a href="https://github.com/ElanYoung/vite-vue-js-starter-template/blob/master/LICENSE">
-    <img alt="LICENSE" src="https://img.shields.io/github/license/ElanYoung/vite-vue-js-starter-template.svg" />
-  </a>
-</p>
-
-<p align='center'>
-  <b>Vite6</b> + <b>Vue3</b> + <b>JavaScript</b> + <b>Vue Router</b> + <b>Pinia</b> + <b>TDesign</b> + <b>Less</b> + <b>Axios</b> + <b>ESLint + Stylelint + Prettier</b>
-</p>
-
-<p align='center'>
-  <a href="https://elanyoung.github.io/vite-vue-js-starter-template">Live Demo</a>
-</p>
-
-<p align="center">
-  <span>English | <a href="./README.zh-CN.md">简体中文</a></span>
-</p>
+# DEM lookup by coordinate using PMTiles
 
 ## Features
 
-+ ⚡️ [Vite 6](https://github.com/vitejs/vite) - born with fastness
-+ 🖖 [Vue 3](https://github.com/vuejs/core) - Composition API and `<script setup>`
-+ 🚦 [Vue Router](https://github.com/vuejs/router) - The official router for Vue.js.
-+ 📦 [Pinia](https://github.com/vuejs/pinia) - Intuitive, type safe and flexible Store for Vue
-+ 💻 [TDesign](https://github.com/Tencent/tdesign-vue-next) - Vue Next for Web
-+ 🎨 [Less](https://github.com/less/less.js) - It's CSS, with just a little more
-+ 📥 [APIs auto importing](https://github.com/antfu/unplugin-auto-import) - Use Composition API and others directly
-+ 😃 [Icons auto install](https://github.com/unplugin/unplugin-icons) - Access thousands of icons as components on-demand universally.
-+ 🔗 [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
-+ 🧰 [Husky](https://typicode.github.io/husky/#/) + [Lint-Staged](https://github.com/okonet/lint-staged) - Git Hook Tools
-+ 🛡️ [EditorConfig](http://editorconfig.org) + [ESLint](http://eslint.org) + [Prettier](https://prettier.io) + [Stylelint](https://stylelint.io) - Code Standards
-+ 🔨 [Commitizen](https://cz-git.qbb.sh/zh) + [Commitlint](https://commitlint.js.org) - Submit Standards
+- provides a way to use a Geotiff Terrain model in a webapp using [Protomaps](https://protomaps.com/) encoding
+- provide an example web app demonstrating terrain lookup and a leaflet map
 
-## Coding Style
+## Demo
 
-+ Use Composition API with [`<script setup>` SFC syntax](https://github.com/vuejs/rfcs/pull/227)
-+ [ESLint](https://eslint.org)
-+ [Prettier](https://prettier.io)
-+ [Stylelint](https://stylelint.io)
+[Try it here](https://static.mah.priv.at/apps/DEM-lookup-PMtiles/)
 
-## Development Tools
+## Map conversion
 
-+ [pnpm](https://pnpm.io/) - fast, disk space efficient package manager
-+ [Visual Stuido Code Extensions](./.vscode/extensions.json)
-  + [Vite](https://marketplace.visualstudio.com/items?itemName=antfu.vite) - Fire up Vite server automatically
-  + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - Vue 3 `<script setup>` IDE support
-  + [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) - A solution for unifying code formats
-  + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Find and fix problems in your JavaScript code
-  + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - An opinionated code formatter
-  + [StyleLint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) - A mighty, modern linter that helps you avoid errors and enforce conventions in your styles.
+see the [conversion script](pmtiles/geotiff-dem-2-pmtiles.sh)
 
-## Try it now!
+Usage:
 
-> Vite5 Vue3 JavaScript Starter Template requires Node >= 18.00
+`````
+pmtiles/geotiff-dem-2-pmtiles.sh --help
+Usage: pmtiles/geotiff-dem-2-pmtiles.sh [OPTIONS] file1.tif [file2.tif ...]
 
-### GitHub Template
+Convert GeoTIFF DEM files to terrain-rgb encoded PMTiles with WebP lossless compression.
 
-[Create a repo from this template on GitHub](https://github.com/ElanYoung/vite-vue-js-starter-template/generate).
+OPTIONS:
+    -t, --tile-size SIZE    Tile size in pixels (default: 256)
+    -d, --target-dir DIR    Target directory for output PMTiles files
+                           (default: current directory)
+    -v, --verbose          Enable verbose output
+    --no-cleanup           Keep intermediate files (for debugging)
+    -h, --help             Show this help message
 
-### Clone to local
+EXAMPLES:
+    pmtiles/geotiff-dem-2-pmtiles.sh dem.tif
+    pmtiles/geotiff-dem-2-pmtiles.sh --tile-size 512 --target-dir ./output *.tif
+    pmtiles/geotiff-dem-2-pmtiles.sh -t 256 -d /path/to/output dem1.tif dem2.tif
 
-If you prefer to do it manually with the cleaner git history
+REQUIREMENTS:
+    - GDAL (gdalwarp, gdal_translate)
+    - rasterio/rio-rgbify (rio rgbify)
+    - rio-pmtiles (rio pmtiles)
 
-```bash
-# [optional] if you are using Windows, you need to close the end-of-line conversion
-git config --global core.autocrlf input
+The script performs the following steps for each input file:
+1. Reproject to Web Mercator (EPSG:3857)
+2. Convert to terrain-rgb encoding (base -10000, interval 0.1)
+3. Generate PMTiles with WebP lossless compression
+4. Clean up intermediate files (unless --no-cleanup is used)
+`````
 
-# clone repository
-git clone https://github.com/ElanYoung/vite-vue-js-starter-template
+The script requires a working installation of GDAL and several Python packages:
 
-# open folder vite-vue-js-starter-template
-cd vite-vue-js-starter-template
+`````shell
+brew install gdal
+pip install rasterio rio-rgbify rio-pmtiles
+`````
 
-# install packages
-npm i
-```
+## Usage in a Web app
 
-## Checklist
+see src/utils/DEMLookup.ts
 
-When you use this template, try follow the checklist to update your info properly
+## Geotiff DEM's
 
-- [ ] Change the author name in `LICENSE`
-- [ ] Change the title in `App.vue`
-- [ ] Change the hostname in `vite.config.js`
-- [ ] Change the favicon in `public`
-- [ ] Remove the `.github` folder which contains the funding info
-- [ ] Clean up the READMEs and remove routes
-
-## Usage
+I used <https://sonny.4lima.de/> as source.
 
 ### Development
 
-> Just run and visit http://localhost:3000
+> Just run and visit <http://localhost:3000>
 
 ```bash
 ## install dependencies
@@ -127,12 +80,7 @@ npm run dev
 npm run build
 ```
 
-## Achievement
-
-🎉 Added to the [Awesome Vite.Js](https://github.com/vitejs/awesome-vite#vue-3)
-
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2022 ElanYoung
+Copyright (c) 2025 Michael Haberler

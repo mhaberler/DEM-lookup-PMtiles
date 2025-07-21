@@ -25,7 +25,8 @@
     "lint:fix": "eslint --cache --max-warnings 0 \"{src,mock}/**/*.{vue,js,ts,tsx}\" --fix",
     "stylelint": "stylelint \"**/*.{html,vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "stylelint:fix": "stylelint \"**/*.{html,vue,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/ --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy-mah.priv.at": "vite build --mode production --outDir ./dist-ssr  && rsync -avz --delete ./dist-ssr/ mah@mah.priv.at:/var/www/static.mah.priv.at/apps/DEM-lookup-PMtiles/ && echo  https://static.mah.priv.at/apps/DEM-lookup-PMtiles/ && qrcode-terminal https://static.mah.priv.at/apps/DEM-lookup-PMtiles/"
   },
   "dependencies": {
     "@vueuse/core": "^13.3.0",
@@ -36,6 +37,7 @@
     "pinia": "^3.0.2",
     "pinia-plugin-persistedstate": "^4.3.0",
     "pmtiles": "^4.3.0",
+    "qrcode-terminal": "^0.12.0",
     "tdesign-vue-next": "^1.13.0",
     "vue": "^3.5.15",
     "vue-router": "^4.5.1"
